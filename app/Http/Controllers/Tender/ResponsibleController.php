@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Auth;
 use App\User;
 
+//testing
 class ResponsibleController extends Controller
 {
     public function __construct()
