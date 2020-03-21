@@ -1,15 +1,15 @@
 <div id="emp_docs">
 	<form id="upload_form" enctype='multipart/form-data'>
 		<div class="row">
-		    <div class="col form-group">
+		    <div class="col-sm-6 form-group">
 		    	<label for="">Document Title</label>
 		    	<input type="" name="doc_title" class="form-control">
 		    </div>
-		    <div class="col form-group">
-		    	<label for="">Attachment</label>
-		    	<input style="width: 311px;" type="file" name="file" id="file"><br>
+		    <div class="col-sm-6 form-group">
+		    	<label for="">Attachment</label><br>
+		    	<input style="width: 311px;padding-top: 5px;" type="file" name="file" id="file"><br>
 		    </div>
-		    <div class="col form-group">
+		    <div class="col-sm-12 form-group">
 		    	<label for="">Note</label>
 		    	<textarea style="max-height: 101px;" name="note" id="note" class="form-control" cols="30" rows="10"></textarea>
 		    </div>

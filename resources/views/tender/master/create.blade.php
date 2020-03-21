@@ -14,7 +14,7 @@
 						<form action="{{route('tender_master.store')}}" method="post">
 							@csrf
 								<div class="row form-group">
-									<div class="col-md-6 col-lg-6 col-xl-6 mt-2 ">
+									<div class="col-md-4 col-lg-4 col-xl-4 mt-2 ">
 										<label for="name"><b>Title <span class="text-danger">*</span></b> </label>
 										<div class="input-group">
 											<div class="input-group-prepend">
@@ -30,21 +30,7 @@
 						                    </span>
 					                	@enderror
 									</div>
-									<div class="col-md-6 col-lg-6 col-xl-6 mt-2 ">
-										<label for="name"><b>Is eligible <span class="text-danger">*</span></b> </label>
-										<div class="toggle-flip">
-						                <label>
-						                    <input type="checkbox" name="is_eligible" value="1" {{old('is_eligible') == 1 ? 'checked' : ''}}>
-						                    <span class="flip-indecator" data-toggle-on="YES" data-toggle-off="NO"></span>
-						                  </label>
-						                </div>
-										@error('description')
-					                    <span class="text-danger" role="alert">
-					                        <strong>{{ $message }}</strong>
-					                    </span>
-					                	@enderror
-									</div>
-									<div class="col-md-6 col-lg-6 col-xl-6 mt-2 ">
+									<div class="col-md-4 col-lg-4 col-xl-4 mt-2 ">
 										<label for="name"><b>Category ID <span class="text-danger">*</span></b> </label>
 										<div class="input-group">
 											<div class="input-group-prepend">
@@ -65,7 +51,7 @@
 						                    </span>
 					                	@enderror
 									</div>
-									<div class="col-md-6 col-lg-6 col-xl-6 mt-2 ">
+									<div class="col-md-4 col-lg-4 col-xl-4 mt-2 ">
 										<label for="name"><b>Type ID <span class="text-danger">*</span></b> </label>
 										<div class="input-group">
 											<div class="input-group-prepend">
@@ -86,7 +72,7 @@
 						                    </span>
 					                	@enderror
 									</div>
-									<div class="col-md-6 col-lg-6 col-xl-6 mt-2 ">
+									<div class="col-md-4 col-lg-4 col-xl-4 mt-2 ">
 										<label for="name"><b>Priority<span class="text-danger">*</span></b> </label>
 										<div class="input-group">
 											<div class="input-group-prepend">
@@ -107,7 +93,36 @@
 						                        <strong>{{ $message }}</strong>
 						                    </span>
 					                	@enderror
+									</div>									
+									<div class="col-md-4 col-lg-4 col-xl-4 mt-2 ">
+										<label for="name"><b>Is eligible <span class="text-danger">*</span></b> </label>
+										<div class="toggle-flip">
+						          <label>
+						            <input type="checkbox" name="is_eligible" value="1" {{old('is_eligible') == 1 ? 'checked' : ''}}>
+						            <span class="flip-indecator" data-toggle-on="YES" data-toggle-off="NO"></span>
+						           </label>
+						        </div>
+										@error('description')
+					          <span class="text-danger" role="alert">
+					            <strong>{{ $message }}</strong>
+					          </span>
+					          @enderror
 									</div>
+								    <div class="col-md-4 col-lg-4 col-xl-4 mt-2 ">
+								    	<label for="">Tender Allotment Status</label>
+								    	<select name="allotment_status" id="allotment_status" class="select2 form-control">
+								    		<option value="0">-- Select Status --</option>
+								    		<option  value="L1">L1</option>
+								    		<option value="L2">L2</option>
+								    		<option  value="L3">L3</option>
+								    		<option  value="L4">L4</option>
+								    	</select>
+								    	@error('allotment_status')
+						          <span class="text-danger" role="alert">
+						            <strong>{{ $message }}</strong>
+						          </span>
+					          @enderror
+								    </div>
 									<div class="col-md-12 mt-3 ">
 										<button class="btn btn-md btn-success" type="submit"><span class="fa fa-save"></span> Submit</button>
 										<span class="ml-2" ><a href="{{route('tender_category.index')}}" class="btn btn-md btn-default" style="background-color: #f4f4f4;color: #444;    border-color: #ddd;"><span class="fa fa-times-circle"></span> Cancel</a></span>

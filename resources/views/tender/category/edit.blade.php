@@ -12,6 +12,7 @@
 			<div class="col-md-12 col-xl-12">
 				<div class="card shadow-xs">
 					<div class="card-body">
+						<a href="{{route('tender_category.index')}}" style="color: white;background-color: #607fd7;" class="btn btn-sm btn-outline-default float-right">Back</a>
 						<form action="{{route('tender_category.update', ['id'=>$tender_category->id])}}" method="post">
 							@csrf
 							@method('PATCH')

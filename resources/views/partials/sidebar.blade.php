@@ -1,12 +1,12 @@
-<aside class="app-sidebar">
+<aside style="background-color:#607fd7" class="app-sidebar">
   <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
     <div>
-      <p class="app-sidebar__user-name">{{ auth()->user()->name }}</p>
+      <p style="font-size: 14px;" class="app-sidebar__user-name">{{ auth()->user()->name }}</p>
       <p class="app-sidebar__user-designation">Admin Access</p>
     </div>
   </div>
   <ul class="app-menu">
-    <li><a class="app-menu__item active" href="{{url('/')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+    <li><a class="app-menu__item <?php  if(Request::segment(1) == ''){echo 'active';} ?>" href="{{url('/')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
     {{-- <li class="treeview {{call_user_func_array('Request::is', (array)['incomes*']) ? 'is-expanded' : ''}}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-money"></i><span class="app-menu__label">Incomes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
 
@@ -38,7 +38,7 @@
       
       </ul> --}}
     {{-- Employees tab --}}
-      <li class="treeview {{call_user_func_array('Request::is', (array)['tender*']) ? 'is-expanded' : ''}}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-group "></i><span class="app-menu__label">Master</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+      <li class="treeview {{call_user_func_array('Request::is', (array)['tender_type','tender_category','tender_responsible','tender_item','tender_location','tender_unit']) ? 'is-expanded' : ''}}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-group "></i><span class="app-menu__label">Master</span><i class="treeview-indicator fa fa-angle-right"></i></a>
       <ul class="treeview-menu">
           <li class={{call_user_func_array('Request::is', (array)['tender_type*']) ? 'active_subtab' : ''}}><a class="treeview-item" href="{{route('tender_type.index')}}"><i class="icon fa fa-angle-double-right"></i> Types</a></li>
           <li class={{call_user_func_array('Request::is', (array)['tender_category*']) ? 'active_subtab' : ''}}><a class="treeview-item" href="{{route('tender_category.index')}}"><i class="icon fa fa-angle-double-right"></i> Categories</a></li>
@@ -48,7 +48,7 @@
           <li class=""><a class="treeview-item" href="{{route('tender_unit.index')}}"><i class="icon fa fa-angle-double-right"></i>Unit</a></li>
       </ul>
     </li>
-    <li class="{{call_user_func_array('Request::is', (array)['tender_boq*']) ? 'active_subtab' : ''}}"><a class="app-menu__item active" href="{{route('tender_boq.index')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">BOQ Creation</span></a></li>
+    <li class=" "><a class="app-menu__item <?php  if(Request::segment(1) == 'tender_boq'){echo 'active';} ?>" href="{{route('tender_boq.index')}}"><i class="app-menu__icon  fa fa-dashboard"></i><span class="app-menu__label">BOQ Creation</span></a></li>
 
     {{-- end of module --}}
     <li class="treeview {{call_user_func_array('Request::is', (array)['tender_master']) ? 'is-expanded' : ''}}"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-group "></i><span class="app-menu__label">Tenders</span><i class="treeview-indicator fa fa-angle-right"></i></a>

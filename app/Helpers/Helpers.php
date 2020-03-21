@@ -5,12 +5,14 @@ use App\Models\Tenders\Tender;
 class Helpers{
 	
 	public static function getNumber(){
-		$tender     = Tender::orderBy('id', 'DESC')->get();
-		$ten_no     = explode('-',$tender[0]->tender_no);
-
-		if(!empty($tender[0]->tender_no)){
-			$orig_num   = (string)$ten_no[2]+1 ;
-			$dig_cou    = strlen((string)$ten_no[2]+1);
+		$tender     = Tender::orderBy('id', 'DESC')->first();
+		if(!empty($tender)!=0){;
+			$ten_no     = explode('-',$tender->tender_no);
+		}
+    $tendere_num = !empty($tender->tender_no)?$tender->tender_no:0;
+		if($tendere_num != ''){
+			$orig_num   = (int)$ten_no[2]+1 ;
+			$dig_cou    = strlen((int)$ten_no[2]+1);
 			$main_num   = 0;
 
 			if($dig_cou == 1){

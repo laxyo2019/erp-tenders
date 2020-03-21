@@ -1,7 +1,6 @@
-<header class="app-header"><a class="app-header__logo" href="{{url('/')}}">Accounting</a>
+<header style="background-color:#607fd7" class="app-header"><a  style="background-color:#607fd7;border-bottom: 1px solid;border-right: 1px solid;" class="app-header__logo" href="https://laxyo.org"><img style="width: 100px; margin-top: -11px;" src="{{asset('images/logo.png')}}"></a>
 <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
 <!-- Navbar Right Menu-->
-  {{auth()->user()->name}}
 <ul class="app-nav">
   <li class="app-search">
     <input class="app-search__input" type="search" placeholder="Search">

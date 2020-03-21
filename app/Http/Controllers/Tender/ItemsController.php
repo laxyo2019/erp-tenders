@@ -46,7 +46,8 @@ class ItemsController extends Controller
     public function edit($id)
     {
         $data = TenderItems::find($id);
-        return view('tender.items.edit',compact('data'));
+         $unit = UnitsMast::all();
+        return view('tender.items.edit',compact('data','unit'));
     }
 
     public function update(Request $request, $id)

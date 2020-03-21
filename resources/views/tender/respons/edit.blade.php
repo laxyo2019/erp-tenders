@@ -96,6 +96,7 @@
 			<div class="col-md-12 col-xl-12">
 				<div class="card shadow-xs">
 					<div class="card-body">
+						<a href="{{route('tender_responsible.index')}}" style="color: white;background-color: #607fd7;" class="btn btn-sm btn-outline-default float-right">Back</a>
 						<form action="{{route('tender_responsible.update',$data->id)}}" method="post">
 							@csrf
 							@method('PATCH')

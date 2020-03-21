@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Helpers\Helpers;
 use Session;
 use File;
+use App\User;
 
 class TenderController extends Controller
 {
@@ -32,7 +33,7 @@ class TenderController extends Controller
 	{
 		$types      = TenderType::all();
 		$categories = TenderCategory::all();		
-		$tenders    = Tender::with('category', 'type','category')->get();
+		$tenders    = Tender::with('category', 'type','category','responsibl')->get();
 		return view('tender.master.index', compact('tenders', 'types', 'categories'));
 	}
 
@@ -42,7 +43,7 @@ class TenderController extends Controller
 	 	$tender_types      = TenderType::all();
 		$tender_categories = TenderCategory::all();
 		$location          = Location::all();
-		$responsi          = Responsible::all();
+		$responsi          = User::where('deleted_at',null)->OrderBy('name','ASC')->get();
 		$client            = TenderClient::where('tender_id',$tender_id)->get();
 		$document          = TenderDocument::where('tender_id',$tender_id)->get();
 		$tender            = Tender::with(['prebids','clients','corrigendums','documents','tenderOtherDate','emd','responsibl'])->where('id',$tender_id)->first();
@@ -71,29 +72,32 @@ class TenderController extends Controller
 		 		'title'	        => 'required|string|max:255',
 		 		'category_id'	=> 'required',
 		 		'type_id'	    => 'required',
-		 		'priority'	    => 'required'
+		 		'priority'	    => 'required',
+		 		'allotment_status'  => 'required|not_in:0'
 		 	]);
 		
  		$is_eligible = isset($request->is_eligible) ? $request->is_eligible : 0;
  		$trnder_num  = Helpers::getNumber(); 		
- 		$tender               = new Tender();
- 		$tender->title        = $data['title'];
- 		$tender->account_code = 12345;
- 		$tender->is_eligible  = $is_eligible;
- 		$tender->category_id  = $data['category_id'];
- 		$tender->type_id      = $data['type_id'];
- 		$tender->priority     = $data['priority'];
- 		$tender->tender_no    = $trnder_num;
+ 		$tender                     = new Tender();
+ 		$tender->title              = $data['title'];
+ 		$tender->account_code       = 12345;
+ 		$tender->is_eligible        = $is_eligible;
+ 		$tender->category_id        = $data['category_id'];
+ 		$tender->type_id            = $data['type_id'];
+ 		$tender->priority           = $data['priority'];
+ 		$tender->tender_no          = $trnder_num;
+ 		$tender->allotment_status   = $data['allotment_status'];
  		$tender->save();
  		return redirect()->route('tender_master.index')->with('success','Created Successfully.');
 	}
 
 	public function show($id)
 	{
-		$tender = Tender::find($id);
+		$tender = Tender::with(['responsibl'])->find($id);
 		$tender_types = TenderType::all();
 		$tender_categories = TenderCategory::all();
-		return view('tender.master.show',compact('tender','tender_categories','tender_types','id'));
+		$user = User::all();
+		return view('tender.master.show',compact('tender','tender_categories','tender_types','id','user'));
 	}
 
 	public function edit($id)

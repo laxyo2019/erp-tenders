@@ -6,7 +6,11 @@
 		    	<select name="synopsis_id" id="" class="select2 form-control">
 		    		<option value="">-- Select Employee --</option>
 		    		@foreach($responsi as $res)
-		    			<option {{ $tender->responsibl ? ($tender->responsibl->synopsis_id ? $tender->responsibl->synopsis_id :''):'' == $res->id ? 'selected':''}} value="{{$res->id}}">{{$res->name}}</option>
+		    			<option <?php if($tender->responsibl){
+		    				 						if ($tender->responsibl->synopsis_id == $res->id) {
+		    				 								 echo 'selected'; 
+		    				 								}
+		    				 					  } ?> value="{{$res->id}}">{{$res->name}}</option>
 		    		@endforeach	
 		    	</select>
 		    </div>
@@ -15,7 +19,11 @@
 		    	<select name="filling_id" id="" class="select2 form-control">
 		    		<option value="">-- Select Employee --</option>
 		    		@foreach($responsi as $res)
-		    			<option {{$tender->responsibl ? ($tender->responsibl->filling_id ? $tender->responsibl->filling_id : ''):'' == $res->id ? 'selected':''}} value="{{$res->id}}">{{$res->name}}</option>
+		    		<option <?php if($tender->responsibl){
+		    				 						if ($tender->responsibl->filling_id == $res->id) {
+		    				 								 echo 'selected'; 
+		    				 								}
+		    				 					  } ?> value="{{$res->id}}">{{$res->name}}</option>
 		    		@endforeach	
 		    	</select>
 		    </div>
@@ -24,7 +32,11 @@
 	    	<select name="market_survey_id" id="" class="select2 form-control">
 		    		<option value="">-- Select Employee --</option>
 		    		@foreach($responsi as $res)
-		    			<option {{$tender->responsibl ? ($tender->responsibl->market_survey_id ? $tender->responsibl->market_survey_id:''):'' == $res->id ? 'selected':''}} value="{{$res->id}}">{{$res->name}}</option>
+		    			<option <?php if($tender->responsibl){
+		    				 						if ($tender->responsibl->market_survey_id == $res->id) {
+		    				 								 echo 'selected'; 
+		    				 								}
+		    				 					  } ?> value="{{$res->id}}">{{$res->name}}</option>
 		    		@endforeach	
 		    	</select>
 		    </div>
@@ -33,7 +45,11 @@
 		    	<select name="rate_analysis_id" id="" class="select2 form-control">
 		    		<option value="">-- Select Employee --</option>
 		    		@foreach($responsi as $res)
-		    			<option {{$tender->responsibl ? ($tender->responsibl->rate_analysis_id ? $tender->responsibl->rate_analysis_id :''):'' == $res->id ? 'selected':''}} value="{{$res->id}}">{{$res->name}}</option>
+		    			<option <?php if($tender->responsibl){
+		    				 						if ($tender->responsibl->rate_analysis_id == $res->id) {
+		    				 								 echo 'selected'; 
+		    				 								}
+		    				 					  } ?> value="{{$res->id}}">{{$res->name}}</option>
 		    		@endforeach	
 		    	</select>
 		    </div>

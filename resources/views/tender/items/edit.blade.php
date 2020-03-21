@@ -11,6 +11,7 @@
 			<div class="col-md-12 col-xl-12">
 				<div class="card shadow-xs">
 					<div class="card-body">
+							<a href="{{route('tender_item.index')}}" style="color: white;background-color: #607fd7;" class="btn btn-sm btn-outline-default float-right">Back</a>
 						<form action="{{route('tender_item.update',$data->id)}}" method="post">
 							@csrf
 							@method('PATCH')
@@ -27,14 +28,20 @@
 								</div>
 
 								<div class="col-md-4 col-lg-4 col-xl-4 mt-2 offset-4">
-									<label for="name"><b>Unit Name <span class="text-danger">*</span></b> </label>			
-										<input type="text" name="unit_name" class="form-control" value="{{old('unit_name') ?? $data->unit_name}}">
-										@error('unit_name')
-					                    <span class="text-danger" role="alert">
-					                        <strong>{{ $message }}</strong>
-					                    </span>
-					                	@enderror								
-								</div>								
+									<label for="name"><b>Unit Name <span class="text-danger">*</span></b> </label>
+									<select name="unit_id" class="form-control">
+										<option><-- Select --></option>
+										@foreach($unit as $units)
+											<option value ="{{$units->id}}" <?php if ($units->id == $data->unit_id){ echo 'selected'; } ?> >{{$units->name}}</option>
+										@endforeach	
+									</select>			
+										
+									@error('unit_id')
+				                    <span class="text-danger" role="alert">
+				                        <strong>{{ $message }}</strong>
+				                    </span>
+				                	@enderror								
+								</div>									
 							
 								<div class="col-md-4 col-lg-4 col-xl-4 mt-2 offset-4">
 									<label for="name"><b>Remarks</b> </label>

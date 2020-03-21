@@ -4,7 +4,7 @@
 	<main class="app-content">
 		<div class="row">
 			<div class="col-md-12 col-xl-12">
-				<h1 style="font-size: 20px">Edit Tender type</h1>
+				<h1 style="font-size: 20px">Edit Tender type</h1>				
 				<hr>
 			</div>
 		</div>
@@ -12,6 +12,7 @@
 			<div class="col-md-12 col-xl-12">
 				<div class="card shadow-xs">
 					<div class="card-body">
+						<a href="{{route('tender_type.index')}}" style="color: white;background-color: #607fd7;" class="btn btn-sm btn-outline-default float-right">Back</a>
 						<form action="{{route('tender_type.update', ['id'=>$tender_type->id])}}" method="post">
 							@csrf
 							@method('PATCH')

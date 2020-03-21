@@ -132,6 +132,7 @@ function display_priority_class($int){
 									<th>Name</th>
 									<th>Category</th>
 									<th>Type</th>
+									<th>Qualification</th>
 									<th>Publish Date</th>
 									<th>Priority</th>
 									<th>Eligible?</th>
@@ -146,6 +147,7 @@ function display_priority_class($int){
 								<td>{{$row->title}}</td>
 								<td>{{$row->category->name}}</td>
 								<td>{{$row->type->name}}</td>
+								<td>{{$row->allotment_status}}</td>
 								<td>{{$row->created_at}}</td>
 								<td class="text-white font-weight-bold {{ display_priority_class($row->priority) }}">
 									{{ display_priority_text($row->priority) }}
