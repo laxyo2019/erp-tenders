@@ -11,9 +11,9 @@
 |
 */
 Route::get('/', 'HomeController@index')->name('home');
-// Auth::routes();
-Route::get('login/{username}/{pass}', 'LoginController@login');
-Route::get('/logout', 'LoginController@logout')->name('logout');
+ Auth::routes();
+// Route::get('login/{username}/{pass}', 'LoginController@login');
+// Route::get('/logout', 'LoginController@logout')->name('logout');
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/expenses/bills','Expenses\BillsController');
@@ -98,6 +98,8 @@ Route::get('/responsible_delete/{id}', 'Tender\ResponsibleController@destroy');
 Route::resource('/tender_location', 'Tender\LocationController'); 
 Route::get('/tender_location_delete/{id}','Tender\LocationController@destroy'); 
 Route::resource('/tender_boq', 'Tender\BOQController');
+Route::get('/edit_boq/{id}', 'Tender\BOQController@customEdit')->name('editBoq');
+Route::get('/delete_boq/{id}', 'Tender\BOQController@destroy')->name('Boqdelete');
 Route::resource('/tender_item', 'Tender\ItemsController'); 
 Route::get('/tender_item_delete/{id}', 'Tender\ItemsController@destroy'); 
 Route::resource('/tender_unit', 'Tender\UnitController'); 
