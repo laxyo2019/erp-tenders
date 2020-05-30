@@ -15,12 +15,14 @@ use App\Models\Tenders\TenderOthersDate;
 use App\Models\Tenders\Location;
 use App\Models\Tenders\Responsible;
 use App\Models\Tenders\EMD;
+use App\Tenderboq;
 use App\Models\Tenders\TenderResponsibilites;
 use Illuminate\Support\Facades\Storage;
 use App\Helpers\Helpers;
 use Session;
 use File;
 use App\User;
+ 
 
 class TenderController extends Controller
 {
@@ -129,9 +131,15 @@ class TenderController extends Controller
 
 	public function destroy($id)
 	{
-		$tender = Tender::find($id);
-    $tender->delete();
-  	return redirect()->route('tender_master.index')->with('success','Deleted Successfully.');
+		$tender = Tender::where('id',$id)->update(['deleted_at'=>date('Y-m-d H:i:s')]);
+		TenderClient::where('tender_id',$id)->update(['deleted_at'=>date('Y-m-d H:i:s')]);
+		TenderPrebid::where('tender_id',$id)->update(['deleted_at'=>date('Y-m-d H:i:s')]);
+		TenderCorrigendum::where('tender_id',$id)->update(['deleted_at'=>date('Y-m-d H:i:s')]);
+		TenderDocument::where('tender_id',$id)->update(['deleted_at'=>date('Y-m-d H:i:s')]);
+		TenderOthersDate::where('tender_id',$id)->update(['deleted_at'=>date('Y-m-d H:i:s')]);	
+		EMD::where('tender_id',$id)->update(['deleted_at'=>date('Y-m-d H:i:s')]);
+		Tenderboq::where('tender_id',$id)->update(['deleted_at'=>date('Y-m-d H:i:s')]);
+  		return redirect()->route('tender_master.index')->with('success','Deleted Successfully.');
 	}
 
 	public function save_details(Request $request)

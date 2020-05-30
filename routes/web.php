@@ -83,6 +83,7 @@ Route::resource('/settings/grades','Settings\GradesController');
 //start Tendar section routing
 
 Route::resource('/tender_master', 'Tender\TenderController');
+Route::get('/delete_tender_master/{id}', 'Tender\TenderController@destroy')->name('deleteTender');
 Route::post('tender_master/{type}', 'Tender\TenderController@getForm');
 Route::post('tender_details/', 'Tender\TenderController@save_details');
 Route::post('delete_reco/', 'Tender\TenderController@delete_reco');
@@ -105,6 +106,9 @@ Route::get('/tender_item_delete/{id}', 'Tender\ItemsController@destroy');
 Route::resource('/tender_unit', 'Tender\UnitController'); 
 Route::get('/tender_unit_delete/{id}', 'Tender\UnitController@destroy'); 
  
+Route::resource('/tender_status', 'Tender\TenderStatus'); 
+Route::get('/delete_tender_status/{id}', 'Tender\TenderStatus@destroy')->name('deletestatus'); 
+
 Route::group(['prefix' => 'tenders', 'namespace' => 'Tender'], function ()  {
 	
 });

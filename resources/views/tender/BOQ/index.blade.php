@@ -71,8 +71,8 @@ function display_priority_class($int){
 									<th>Name</th>
 									<th>Category</th>
 									<th>Type</th>
+									<th>Status</th>
 									<th>Publish Date</th>
-									<th>Priority</th>
 									<th>Action</th>									
 								</tr>
 							</thead>

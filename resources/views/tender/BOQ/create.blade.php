@@ -95,6 +95,7 @@
 									<th>Item Quantity</th>
 									<th>Item Rate</th>
 									<th>Amount</th>									
+									<th>Remark</th>									
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -110,6 +111,7 @@
 										<td>{{$Data->quantit}}</td>
 										<td>{{$Data->rate}}</td>
 										<td>{{$Data->amount}}</td>
+										<td>{{$Data->remark}}</td>
 										<td>
 											<a class="fa fa-pencil text-success" onclick="edit({{$Data->id}} )"></a>
 											<a onclick="deleted({{$Data->id}})" class="fa fa-trash text-danger"></a>

@@ -136,7 +136,7 @@ function display_priority_class($int){
 									<th>Publish Date</th>
 									<th>Priority</th>
 									<th>Eligible?</th>
-									<th></th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -149,16 +149,16 @@ function display_priority_class($int){
 								<td>{{$row->type->name}}</td>
 								<td>{{$row->allotment_status}}</td>
 								<td>{{$row->created_at}}</td>
-								<td class="text-white font-weight-bold {{ display_priority_class($row->priority) }}">
-									{{ display_priority_text($row->priority) }}
+								<td class="text-white font-weight-bold">
+									<span class="{{ display_priority_class($row->priority) }} badge ">{{ display_priority_text($row->priority) }}</span>
 								</td>
-								<td class="text-white font-weight-bold {{ $row->is_eligible == 1 ? 'bg-success' : 'bg-danger' }}">
-									{{ $row->is_eligible == 1 ? 'Yes' : 'No' }}
+								<td class="text-white font-weight-bold  ">
+									<span class="badge {{ $row->is_eligible == 1 ? 'badge-success' : 'badge-danger' }}">{{ $row->is_eligible == 1 ? 'Yes' : 'No' }}</span>
 								</td>
-								<td class="d-flex">
-									<span>
-										<a href="{{route('tender_master.show',$row->id)}}" class="btn btn-sm btn-outline-primary">View Details</a>
-									</span>									
+								<td class="">
+									<a style="padding: 2px;" href="{{route('tender_master.show',$row->id)}}" class="btn btn-xs btn-outline-primary fa fa-eye"></a>
+									<a style="padding: 2px;" href="{{route('deleteTender',$row->id)}}" class="btn btn-xs btn-outline-danger fa fa-trash"></a>
+									
 								</td>
 							</tr>
 							@endforeach
